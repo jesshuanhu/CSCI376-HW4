@@ -39,7 +39,7 @@ const questions = [
   ];
   
   // 2. How do we know what id to search for when using document.getElementById()? Where are the following ids specified in index.html? 
-  // 
+  // You search for the id with the specified name inputted into the function getElementById(). The ids are specified in index.html in the quiz container class.
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   const nextButton = document.getElementById("next-btn");
@@ -61,7 +61,8 @@ const questions = [
   
     currentQuestion.answers.forEach(answer => {
       // 3. Why are these HTML elements being created dynamically in the JS file, while other page elements are defined statically in the HTML file?
-      // 
+      // The HTML elements are being created dynamically in the JS file because they are the elements that the user is interacting with, such as the answer buttons.
+      // The other page elements are defined statically in the HTML file becaue they are not being interacted with by the user, such as the page header.
       const button = document.createElement("button");
       button.textContent = answer.text;
       button.classList.add("btn");
@@ -70,7 +71,7 @@ const questions = [
       }
       button.addEventListener("click", selectAnswer);
       // 4. What is the line below doing? 
-      // 
+      // t is appending a button to the list of answer buttons, where correct answers have a button that ndicates the answer is correct.
       answerButtonsElement.appendChild(button);
     });
   }
@@ -97,7 +98,8 @@ const questions = [
       button.disabled = true;
     });
     // 5. Why is it important to change the display styling rule for the "Next" button to "block" here? What would happen if you did not have this line?
-    // 
+    // Including this line of code is what allows for the user to get to the next question in the quiz via the "Next" button. If you did not have this line,
+    // then no "Next" button appears after the user answers the first question, so the next question in the quiz cannot be accessed.
     nextButton.style.display = "block";
   }
   
@@ -118,7 +120,7 @@ const questions = [
   }
   
   // 6. Summarize in your own words what you think this block of code is doing. 
-  // 
+  // It continues through the quiz until al the questions have been answered, and then there is the option to restart the quiz when there are no more questions left.
   nextButton.addEventListener("click", () => { 
     if (currentQuestionIndex < questions.length) {
       handleNextButton();
