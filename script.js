@@ -26,6 +26,15 @@ const questions = [
         { text: "Computer Style Sheets", correct: false },
         { text: "Creative Style Syntax", correct: false }
       ]
+    },
+    {
+      question: "What color is #ffcf0d",
+      answers: [
+        { text: "Pink", correct: false },
+        { text: "Yellow", correct: true },
+        { text: "Green", correct: false },
+        { text: "Blue", correct: false }
+      ]
     }
   ];
   
