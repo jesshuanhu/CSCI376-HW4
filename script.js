@@ -43,6 +43,7 @@ const questions = [
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   const nextButton = document.getElementById("next-btn");
+  const hintButton = document.getElementById("hint-btn");
   
   let currentQuestionIndex = 0;
   let score = 0;
@@ -109,15 +110,26 @@ const questions = [
     nextButton.textContent = "Restart";
     nextButton.style.display = "block";
   }
-  
+
   function handleNextButton() {
     currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex) {
       showQuestion();
     } else {
       showScore();
     }
   }
+
+  hintButton.addEventListener("click", () => { 
+    // make a list of all answer buttons
+    const buttonsList = Array.from(answerButtonsElement.children);
+    // make a list of the incorrect answer buttons
+    const incorrectButtons = buttonsList.filter(btn => btn.dataset.correct !== "true" && !btn.classList.contains("wrong"))
+    // if there are still incorrect answer buttons, reveal the first one from the top
+    if (incorrectButtons.length > 0) {
+      incorrectButtons[0].classList.add("wrong");
+    }
+  })
   
   // 6. Summarize in your own words what you think this block of code is doing. 
   // It continues through the quiz until al the questions have been answered, and then there is the option to restart the quiz when there are no more questions left.
